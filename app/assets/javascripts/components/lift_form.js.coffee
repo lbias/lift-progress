@@ -60,6 +60,8 @@
         className: 'form-group'
         React.DOM.input
           type: 'number'
+          min: 1
+          max: 10
           className: 'form-control'
           placeholder: 'repsperformed'
           name: 'repsperformed'
