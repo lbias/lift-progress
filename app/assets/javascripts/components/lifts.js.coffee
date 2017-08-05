@@ -6,7 +6,7 @@
   addLift: (lift) ->
     lifts = @state.lifts.slice()
     lifts.push lift
-    @setState lifts: liftes
+    @setState lifts: lifts
   render: ->
     React.DOM.div
       className: 'lifts'
@@ -23,8 +23,6 @@
             React.DOM.th null, 'Weight Lifted'
             React.DOM.th null, 'Reps Performed'
             React.DOM.th null, '1 RM'
-            React.DOM.th null, 'Metric?'
-            React.DOM.th null, 'Actions'
         React.DOM.tbody null,
-         for lift in @state.lifts
-          React.createElement Lift, key: lift.id, lift: lift, handleDeleteLift: @deleteLift, handleEditLift: @updateLift
+          for lift in @state.lifts
+            React.createElement Lift, key: lift.id, lift: lift, handleDeleteLift: @deleteLift, handleEditLift: @updateLift

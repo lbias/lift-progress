@@ -5,10 +5,10 @@
     ismetric: false
     weightlifted: ''
     repsperformed: ''
-    onerm: ''
+    onerm: '0'
   handleValueChange: (e) ->
     valueName = e.target.name
-    @setState '#{ valueName }': e.target.value
+    @setState "#{ valueName }": e.target.value
   valid: ->
     @state.date && @state.liftname && @state.weightlifted && @state.repsperformed && @state.onerm
   handleSubmit: (e) ->
@@ -38,15 +38,6 @@
           placeholder: 'liftname'
           name: 'liftname'
           value: @state.liftname
-          onChange: @handleValueChange
-      React.DOM.div
-        className: 'form-group'
-        React.DOM.input
-          type: 'boolean'
-          className: 'form-control'
-          placeholder: 'ismetric'
-          name: 'ismetric'
-          value: @state.ismetric
           onChange: @handleValueChange
       React.DOM.div
         className: 'form-group'
