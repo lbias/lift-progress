@@ -3,6 +3,10 @@
     lifts: @props.data
   getDefaultProps: ->
     lifts: []
+  addLift: (lift) ->
+    lifts = @state.lifts.slice()
+    lifts.push lift
+    @setState lifts: liftes
   render: ->
     React.DOM.div
       className: 'lifts'
