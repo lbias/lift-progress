@@ -3,6 +3,9 @@
     edit: false
     onerm: @props.lift.onerm
     ismetric: @props.lift.ismetric
+  handleToggle: (e) ->
+    e.preventDefault()
+    @setState edit: !@state.edit    
   handleDelete: (e) ->
     e.preventDefault()
     $.ajax
