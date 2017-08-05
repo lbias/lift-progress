@@ -5,7 +5,10 @@
     ismetric: @props.lift.ismetric
   handleToggle: (e) ->
     e.preventDefault()
-    @setState edit: !@state.edit    
+    @setState edit: !@state.edit
+  toggleUnit: (e) ->
+    e.preventDefault()
+    @setState ismetric: !@state.ismetric        
   handleDelete: (e) ->
     e.preventDefault()
     $.ajax
