@@ -9,6 +9,8 @@
   handleValueChange: (e) ->
     valueName = e.target.name
     @setState '#{ valueName }': e.target.value
+  valid: ->
+    @state.date && @state.liftname && @state.weightlifted && @state.repsperformed && @state.onerm
   render: ->
     React.DOM.form
       className: 'form-inline'
