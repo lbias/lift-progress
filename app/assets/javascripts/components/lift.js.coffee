@@ -9,13 +9,31 @@ coefficients = {
   handleToggle: (e) ->
     e.preventDefault()
     @setState edit: !@state.edit
+  handleEdit: (e) ->
+    e.preventDefault()
+    data =
+      date: ReactDOM.findDOMNode(@refs.date).value
+      liftname: ReactDOM.findDOMNode(@refs.liftname).value
+      weightlifted: ReactDOM.findDOMNode(@refs.weightlifted).value
+      ismetric: @state.ismetric
+      repsperformed: ReactDOM.findDOMNode(@refs.repsperformed).value
+      onerm: @state.onerm
+    $.ajax
+      method: 'PUT'
+      url: "/lifts/#{ @props.lift.id }"
+      dataType: 'JSON'
+      data:
+        lift: data
+      success: (data) =>
+        @setState edit: false
+        @props.handleEditLift @props.lift, data    
   reCalculateOneRm: ->
     @setState onerm: @getOneRm( ReactDOM.findDOMNode(@refs.weightlifted).value, ReactDOM.findDOMNode(@refs.repsperformed).value)
   getOneRm: (weight, reps) ->
     if weight and reps > 0 and reps < 11
       weight / coefficients[reps]
     else
-      0    
+      0
   toggleUnit: (e) ->
     e.preventDefault()
     @setState ismetric: !@state.ismetric
