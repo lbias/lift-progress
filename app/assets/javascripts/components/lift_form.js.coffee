@@ -14,7 +14,7 @@
     @setState "#{ valueName }": e.target.value
   calculateOneRm: ->
     if @state.weightlifted and @state.repsperformed
-      @state.onerm = @state.weightlifted / @state.coefficients[@state.repsperformed]
+      @state.onerm = @state.weightlifted / coefficients[@state.repsperformed]
     else
       0
   valid: ->
