@@ -8,7 +8,20 @@
     @setState edit: !@state.edit
   toggleUnit: (e) ->
     e.preventDefault()
-    @setState ismetric: !@state.ismetric        
+    @setState ismetric: !@state.ismetric
+  liftRow: ->
+    React.DOM.tr null,
+      React.DOM.td null, @props.lift.date
+      React.DOM.td null, @props.lift.liftname
+      React.DOM.td null, @props.lift.weightlifted
+      React.DOM.td null, @props.lift.repsperformed
+      React.DOM.td null, @props.lift.onerm
+      React.DOM.td null, @props.lift.ismetric.toString()
+      React.DOM.td null,
+        React.DOM.button
+          className: 'btn btn-primary'
+          onClick: @handleToggle
+          'Edit'
   handleDelete: (e) ->
     e.preventDefault()
     $.ajax
