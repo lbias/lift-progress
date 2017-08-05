@@ -6,9 +6,17 @@
     weightlifted: ''
     repsperformed: ''
     onerm: '0'
+    coefficients: {
+      1: 1, 2: .943, 3: .906, 4: .881, 5: .851, 6: .831, 7: .807, 8: .786, 9: .765, 10: .744
+    }
   handleValueChange: (e) ->
     valueName = e.target.name
     @setState "#{ valueName }": e.target.value
+  calculateOneRm: ->
+    if @state.weightlifted and @state.repsperformed
+      @state.onerm = @state.weightlifted / @state.coefficients[@state.repsperformed]
+    else
+      0
   valid: ->
     @state.date && @state.liftname && @state.weightlifted && @state.repsperformed && @state.onerm
   handleSubmit: (e) ->
@@ -71,3 +79,4 @@
         className: 'btn btn-primary'
         disabled: !@valid()
         'Create Lift'
+      React.createElement OneRmBox, onerm: @calculateOneRm()
