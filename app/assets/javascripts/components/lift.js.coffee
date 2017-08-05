@@ -22,6 +22,10 @@
           className: 'btn btn-primary'
           onClick: @handleToggle
           'Edit'
+        React.DOM.button
+          className: 'btn btn-danger'
+          onClick: @handleDelete
+          'Delete'
   handleDelete: (e) ->
     e.preventDefault()
     $.ajax
