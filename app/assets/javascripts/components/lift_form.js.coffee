@@ -6,6 +6,9 @@
     weightlifted: ''
     repsperformed: ''
     onerm: ''
+  handleValueChange: (e) ->
+    valueName = e.target.name
+    @setState '#{ valueName }': e.target.value
   render: ->
     React.DOM.form
       className: 'form-inline'
