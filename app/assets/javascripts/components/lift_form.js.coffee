@@ -75,6 +75,10 @@
           value: @state.onerm
           onChange: @handleValueChange
       React.DOM.button
+        className: 'btn btn-primary'
+        onClick: @toggleUnit
+        'Metric = ' + @state.ismetric.toString()
+      React.DOM.button
         type: 'submit'
         className: 'btn btn-primary'
         disabled: !@valid()
