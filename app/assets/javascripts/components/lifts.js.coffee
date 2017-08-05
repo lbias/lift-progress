@@ -7,10 +7,15 @@
     lifts = @state.lifts.slice()
     lifts.push lift
     @setState lifts: lifts
+  deleteLift: (lift) ->
+    lifts = @state.lifts.slice()
+    index = lifts.indexOf lift
+    lifts.splice index, 1
+    @replaceState lifts: lifts    
   updateLift: (lift, data) ->
     index = @state.lifts.indexOf lift
     lifts = React.addons.update(@state.lifts, { $splice: [[index, 1, data]] })
-    @replaceState lifts: lifts  
+    @replaceState lifts: lifts
   render: ->
     React.DOM.div
       className: 'lifts'
