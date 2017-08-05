@@ -1,4 +1,12 @@
 @Lift = React.createClass
+  handleDelete: (e) ->
+    e.preventDefault()
+    $.ajax
+      method: 'DELETE'
+      url: "/lifts/#{ @props.lift.id }"
+      dataType: 'JSON'
+      success: () =>
+        @props.handleDeleteLift @props.lift
   render: ->
     React.DOM.tr null,
       React.DOM.td null, @props.lift.date
@@ -11,4 +19,4 @@
         React.DOM.a
           className: 'btn btn-danger'
           onClick: @handleDelete
-          'Delete'      
+          'Delete'
