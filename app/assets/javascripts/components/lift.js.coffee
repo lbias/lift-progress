@@ -1,4 +1,8 @@
 @Lift = React.createClass
+  getInitialState: ->
+    edit: false
+    onerm: @props.lift.onerm
+    ismetric: @props.lift.ismetric
   handleDelete: (e) ->
     e.preventDefault()
     $.ajax
