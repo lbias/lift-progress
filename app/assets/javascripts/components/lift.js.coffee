@@ -9,6 +9,14 @@ coefficients = {
   handleToggle: (e) ->
     e.preventDefault()
     @setState edit: !@state.edit
+  handleDelete: (e) ->
+    e.preventDefault()
+    $.ajax
+      method: 'DELETE'
+      url: "/lifts/#{ @props.lift.id }"
+      dataType: 'JSON'
+      success: () =>
+        @props.handleDeleteLift @props.lift
   handleEdit: (e) ->
     e.preventDefault()
     data =
@@ -26,7 +34,7 @@ coefficients = {
         lift: data
       success: (data) =>
         @setState edit: false
-        @props.handleEditLift @props.lift, data    
+        @props.handleEditLift @props.lift, data
   reCalculateOneRm: ->
     @setState onerm: @getOneRm( ReactDOM.findDOMNode(@refs.weightlifted).value, ReactDOM.findDOMNode(@refs.repsperformed).value)
   getOneRm: (weight, reps) ->
@@ -54,14 +62,6 @@ coefficients = {
           className: 'btn btn-danger'
           onClick: @handleDelete
           'Delete'
-  handleDelete: (e) ->
-    e.preventDefault()
-    $.ajax
-      method: 'DELETE'
-      url: "/lifts/#{ @props.lift.id }"
-      dataType: 'JSON'
-      success: () =>
-        @props.handleDeleteLift @props.lift
   liftForm: ->
     React.DOM.tr null,
       React.DOM.td null,
@@ -109,15 +109,7 @@ coefficients = {
           onClick: @handleToggle
           'Cancel'
   render: ->
-    React.DOM.tr null,
-      React.DOM.td null, @props.lift.date
-      React.DOM.td null, @props.lift.liftname
-      React.DOM.td null, @props.lift.weightlifted
-      React.DOM.td null, @props.lift.repsperformed
-      React.DOM.td null, @props.lift.onerm
-      React.DOM.td null, @props.lift.ismetric.toString()
-      React.DOM.td null,
-        React.DOM.a
-          className: 'btn btn-danger'
-          onClick: @handleDelete
-          'Delete'
+    if @state.edit
+      @liftForm()
+    else
+      @liftRow()
