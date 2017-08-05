@@ -67,15 +67,6 @@
           name: 'repsperformed'
           value: @state.repsperformed
           onChange: @handleValueChange
-      React.DOM.div
-        className: 'form-group'
-        React.DOM.input
-          type: 'number'
-          className: 'form-control'
-          placeholder: 'onerm'
-          name: 'onerm'
-          value: @state.onerm
-          onChange: @handleValueChange
       React.DOM.button
         className: 'btn btn-primary'
         onClick: @toggleUnit
