@@ -1,3 +1,6 @@
+coefficients = {
+  1: 1, 2: .943, 3: .906, 4: .881, 5: .851, 6: .831, 7: .807, 8: .786, 9: .765, 10: .744
+}
 @Lift = React.createClass
   getInitialState: ->
     edit: false
@@ -79,7 +82,7 @@
         React.DOM.button
           className: 'btn btn-danger'
           onClick: @handleToggle
-          'Cancel'        
+          'Cancel'
   render: ->
     React.DOM.tr null,
       React.DOM.td null, @props.lift.date
